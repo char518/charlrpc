@@ -35,8 +35,9 @@ public class Client {
                 protected void initChannel(SocketChannel ch) throws Exception {
                     ChannelPipeline pipeline = ch.pipeline();
                     pipeline.addLast(new CharlMessageEncoder(Request.class));
-                    pipeline.addLast(new CharlMessageDecoder(Request.class));
-                    pipeline.addLast(new NettyClientHandler(response));
+                    pipeline.addLast(new CharlMessageDecoder(Response.class));
+                    NettyClientHandler nettyClientHandler = new NettyClientHandler(response);
+                    pipeline.addLast(nettyClientHandler);
                 }
             });
 
@@ -45,6 +46,7 @@ public class Client {
 
             Channel channel = sync.channel();
             channel.writeAndFlush(request).sync();
+            channel.closeFuture().sync();
 
             return response;
         } catch (InterruptedException e) {

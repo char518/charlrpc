@@ -17,6 +17,6 @@ public class DemoApiImpl implements DemoApi {
     public String bye(String str) {
         System.out.println("Bye from Server!!!");
         LOG.info("Bye info from server!!!");
-        return "Bye from server";
+        return str;
     }
 }

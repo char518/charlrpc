@@ -3,10 +3,12 @@ package piggy.common;
 public class Response {
 
     private String requestId;
-
-    private Object resp;
-
     private Exception exception;
+    private Object result;
+
+    public boolean hasException() {
+        return exception != null;
+    }
 
     public String getRequestId() {
         return requestId;
@@ -16,19 +18,19 @@ public class Response {
         this.requestId = requestId;
     }
 
-    public Object getResp() {
-        return resp;
-    }
-
-    public void setResp(Object resp) {
-        this.resp = resp;
-    }
-
-    public Exception getException() {
+    public Throwable getException() {
         return exception;
     }
 
     public void setException(Exception exception) {
         this.exception = exception;
+    }
+
+    public Object getResult() {
+        return result;
+    }
+
+    public void setResult(Object result) {
+        this.result = result;
     }
 }

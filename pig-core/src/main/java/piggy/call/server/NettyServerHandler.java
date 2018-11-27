@@ -31,7 +31,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler {
         response.setRequestId(request.getRequestId());
         try {
             Object o = handleResult(request);
-            response.setResp(o);
+            response.setResult(o);
         } catch (Exception e) {
             response.setException(e);
             LOG.error("NettyServer handler handle result occured exception：",e.getMessage());

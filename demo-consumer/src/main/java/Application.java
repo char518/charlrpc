@@ -16,7 +16,7 @@ public class Application {
         DemoApi proxy = (DemoApi) clientProxy.createProxy(DemoApi.class);
         proxy.hello();
 
-        String client_say_bye = proxy.bye("client say bye");
+        String client_say_bye = proxy.bye("clientbye");
         System.out.println(client_say_bye);
         System.exit(0);
     }
