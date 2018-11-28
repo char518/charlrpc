@@ -11,7 +11,7 @@ public class DemoApiImpl implements DemoApi {
 
     public void hello() {
         System.out.println("Hello from Server!!!");
-        LOG.info("Hello info from server!!!");
+        LOG.info("=========Hello info from server!!!");
     }
 
     public String bye(String str) {

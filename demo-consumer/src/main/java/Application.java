@@ -14,9 +14,8 @@ public class Application {
 
         ClientProxy clientProxy = (ClientProxy) aca.getBean("clientProxy");
         DemoApi proxy = (DemoApi) clientProxy.createProxy(DemoApi.class);
-        proxy.hello();
 
-        String client_say_bye = proxy.bye("clientbye");
+        String client_say_bye = proxy.bye("client bye");
         System.out.println(client_say_bye);
         System.exit(0);
     }

@@ -34,7 +34,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler {
             response.setResult(o);
         } catch (Exception e) {
             response.setException(e);
-            LOG.error("NettyServer handler handle result occured exception：",e.getMessage());
+            LOG.error("NettyServer handler handle result occured exception：",e.getMessage().toString());
         }
         ctx.writeAndFlush(response).addListener(ChannelFutureListener.CLOSE);
     }
@@ -53,7 +53,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler {
             serviceName.concat(":" + version);
         }
 
-        if (!serverNameMap.contains(serviceName)) {
+        if (!serverNameMap.containsKey(serviceName)) {
             throw new RuntimeException("未找到注册服务！！！");
         }
 

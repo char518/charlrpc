@@ -70,8 +70,8 @@ public class Server implements ApplicationContextAware, InitializingBean {
             protected void initChannel(Channel ch) throws Exception {
                 ChannelPipeline pipeline = ch.pipeline();
                 //先对请求进行转码
-                pipeline.addLast(new CharlMessageEncoder(Request.class));
-                pipeline.addLast(new CharlMessageDecoder(Response.class));
+                pipeline.addLast(new CharlMessageDecoder(Request.class));
+                pipeline.addLast(new CharlMessageEncoder(Response.class));
                 pipeline.addLast(new NettyServerHandler(serverNameMap));
             }
         });

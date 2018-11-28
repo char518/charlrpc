@@ -8,10 +8,6 @@ public class NettyClientHandler extends SimpleChannelInboundHandler {
 
     private Response response;
 
-    public NettyClientHandler(Response response) {
-        this.response = response;
-    }
-
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
         this.response = (Response) msg;
@@ -22,4 +18,9 @@ public class NettyClientHandler extends SimpleChannelInboundHandler {
         super.exceptionCaught(ctx, cause);
         ctx.close();
     }
+
+    public Response getResponse() {
+        return response;
+    }
+
 }

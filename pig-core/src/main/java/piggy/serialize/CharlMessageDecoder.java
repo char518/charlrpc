@@ -18,7 +18,13 @@ public class CharlMessageDecoder extends ByteToMessageDecoder {
     }
 
     @Override
-    protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        super.exceptionCaught(ctx, cause);
+        ctx.close();
+    }
+
+    @Override
+    public void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
         if (in.readableBytes() < 4) {
             return;
         }

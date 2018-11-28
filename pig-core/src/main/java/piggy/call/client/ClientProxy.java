@@ -69,7 +69,7 @@ public class ClientProxy {
                 Client client = new Client(discovery.getHost(), Integer.parseInt(discovery.getPort()));
                 Response response = client.send(request);
                 if (null == response.getException()) {
-                    return response;
+                    return response.getResult();
                 } else {
                     throw response.getException();
                 }

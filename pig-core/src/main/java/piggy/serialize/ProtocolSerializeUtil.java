@@ -1,7 +1,7 @@
 package piggy.serialize;
 
 import io.protostuff.LinkedBuffer;
-import io.protostuff.ProtostuffIOUtil;
+import io.protostuff.ProtobufIOUtil;
 import io.protostuff.Schema;
 import io.protostuff.runtime.RuntimeSchema;
 import org.objenesis.Objenesis;
@@ -31,7 +31,7 @@ public class ProtocolSerializeUtil {
         LinkedBuffer buffer = LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE);
         try {
             Schema<T> schema = getSchema(cls);
-            return ProtostuffIOUtil.toByteArray(obj, schema, buffer);
+            return ProtobufIOUtil.toByteArray(obj, schema, buffer);
         } catch (Exception e) {
             throw new IllegalStateException(e.getMessage(), e);
         } finally {
@@ -46,7 +46,7 @@ public class ProtocolSerializeUtil {
         try {
             T message = objenesis.newInstance(cls);
             Schema<T> schema = getSchema(cls);
-            ProtostuffIOUtil.mergeFrom(data, message, schema);
+            ProtobufIOUtil.mergeFrom(data, message, schema);
             return message;
         } catch (Exception e) {
             throw new IllegalStateException(e.getMessage(), e);
