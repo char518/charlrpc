@@ -16,7 +16,4 @@ public class BeanConfig {
         return new ClientProxy(zookeeperDiscovery());
     }
 
-
-
-
 }
